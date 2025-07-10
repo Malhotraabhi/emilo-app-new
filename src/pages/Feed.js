@@ -1,30 +1,61 @@
 import { useEffect, useState } from 'react';
-import axios from '../api/axios';
+import apiFetch from '../api/Api';
+import Navbar from '../components/Navbar'; 
+import '../index.css';
 
-export default function Feed() {
+export default function Feed({ setToken }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get('/posts/feed')
-      .then(res => setPosts(res.data))
+    apiFetch('/posts/feed')
+      .then(res => setPosts(res.result))
       .catch(err => console.error(err));
   }, []);
 
   return (
-    <div>
-      <h2>Feed</h2>
-     {posts.map(post => (
-  <div key={post._id} style={{
-    background: '#fff',
-    padding: '20px',
-    borderRadius: '10px',
-    marginBottom: '20px',
-    boxShadow: '0 0 10px rgba(0,0,0,0.05)'
-  }}>
-    <p>{post.content}</p>
-    {post.file && <img src={post.file} alt="post" />}
-  </div>
-))}
-    </div>
+    <>
+      <Navbar setToken={setToken} />
+      <div className="feed-container">
+        <h2 className="feed-heading">📰 Feed</h2>
+        {posts.map(post => (
+          <div className="feed-post" key={post._id}>
+            <div className="feed-post-header">
+              <strong>{post.author?.name || 'Anonymous'}</strong> ·{' '}
+              <small>{new Date(post.createdAt).toLocaleString()}</small>
+            </div>
+
+            <p className="feed-post-content">{post.content}</p>
+
+            {post.mediaUrl && (
+              <img
+                src={post.mediaUrl}
+                alt="post"
+                className="feed-post-image"
+              />
+            )}
+
+            <div className="feed-post-likes">
+              ❤️ {post.likes?.length || 0} likes
+            </div>
+
+            {post.comments?.length > 0 && (
+              <div className="feed-post-comments">
+                <strong>Comments:</strong>
+                {post.comments.slice(0, 2).map((comment) => (
+                  <div key={comment._id} className="feed-post-comment">
+                    <strong>{comment.author?.name || 'User'}:</strong> {comment.comment}
+                  </div>
+                ))}
+                {post.comments.length > 2 && (
+                  <div className="feed-post-comment-more">
+                    ...and {post.comments.length - 2} more
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
