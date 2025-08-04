@@ -1,0 +1,127 @@
+.profile-container {
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f3ef;
+  color: #4a4a4a;
+}
+
+.back-button {
+  margin-bottom: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #d17b4f;
+  font-size: 14px;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+  color: #b66641;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #e6dfd9;
+  border-radius: 50%;
+  font-size: 32px;
+  color: #4a4a4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h2 {
+  margin: 0;
+  color: #4a4a4a;
+}
+
+.profile-info p {
+  margin: 4px 0;
+  color: #666;
+}
+
+.follow-button {
+  padding: 6px 14px;
+  margin-top: 8px;
+  background-color: #d17b4f;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.follow-button:hover {
+  background-color: #b66641;
+}
+
+.follow-button.unfollow {
+  background-color: #e74c3c;
+}
+
+.profile-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  border-bottom: 1px solid #dedede;
+}
+
+.profile-tabs button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  color: #4a4a4a;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.profile-tabs button.active {
+  border-bottom: 2px solid #d17b4f;
+  color: #d17b4f;
+}
+
+.profile-content {
+  margin-top: 20px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.followers-list,
+.following-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.user-badge {
+  padding: 10px;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #4a4a4a;
+}

@@ -1,13 +1,17 @@
 
+
 const BASE_URL = 'https://emls.onrender.com/api';
 
 const getToken = () => localStorage.getItem('token');
+
 const apiFetch = async (endpoint, options = {}) => {
   const token = getToken();
 
+  const isFormData = options.body instanceof FormData;
+
   const headers = {
     Accept: 'application/json',
-    'Content-Type': 'application/json',
+    ...(isFormData ? {} : { 'Content-Type': 'application/json' }),
     ...options.headers,
   };
 

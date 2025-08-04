@@ -31,12 +31,12 @@ input {
 }
 
 input:focus {
-  border-color: #007bff;
+  border-color: #d17b4f;
   outline: none;
 }
 
 button {
-  background-color: #007bff;
+  background-color: #d17b4f;
   color: white;
   border: none;
   padding: 10px 14px;
@@ -46,9 +46,7 @@ button {
   transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
+
 
 h2 {
   text-align: center;
@@ -121,4 +119,26 @@ img {
   font-size: 12px;
   margin-top: 5px;
   color: #777;
+}
+.feed-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.post {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.post img {
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.feed-post-comments p {
+  margin: 5px 0;
 }
